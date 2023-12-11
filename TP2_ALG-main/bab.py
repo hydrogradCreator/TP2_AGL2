@@ -7,7 +7,7 @@ TIME_LIMIT = 30 * 60
 
 
 class ExecutionTimeoutError(Exception):
-    """Exceção personalizada para tempo de execução excedido."""
+    """tempo de execução excedido."""
     pass
 
 class TSPSolver:
