@@ -5,7 +5,7 @@ import networkx as nx
 TIME_LIMIT = 30 * 60
 
 class ExecutionTimeoutError(Exception):
-    """Exceção personalizada para tempo de execução excedido."""
+    """ para tempo de execução excedido."""
     pass
 
 def approximate_tsp_path(graph_instance, weight_attribute):
@@ -20,13 +20,10 @@ def approximate_tsp_path(graph_instance, weight_attribute):
     """
     start_time = time.time()
 
-    # Selecionando um vértice inicial arbitrário
     root_vertex = list(graph_instance.nodes)[0]
 
-    # Construindo a Árvore Geradora Mínima usando o algoritmo de Prim
     mst = nx.minimum_spanning_tree(graph_instance, algorithm='prim', weight=weight_attribute)
 
-    # Executando uma caminhada em pré-ordem na árvore
     hamiltonian_cycle = preorder_walk(mst, root_vertex, start_time)
 
     return hamiltonian_cycle
@@ -50,7 +47,6 @@ def preorder_walk(tree, start_vertex, exec_start_time):
 
         return visited
 
-    # Inicia a caminhada em pré-ordem
     visited_vertices = depth_first_search(start_vertex, [], exec_start_time)
 
     return visited_vertices
